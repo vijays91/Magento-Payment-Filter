@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Learn_PaymentFilter>
+            <version>1.0.0</version>
+        </Learn_PaymentFilter>
+    </modules>
+    <global>
+        <models>
+            <paymentfilter>
+                <class>Learn_PaymentFilter_Model</class>
+            </paymentfilter>
+        </models>        
+        <helpers>
+            <paymentfilter>
+                <class>Learn_PaymentFilter_Helper</class>
+            </paymentfilter>
+        </helpers>
+    </global>
+    <frontend>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <customer_group_payment_filter>
+                        <type>singleton</type>
+                        <class>paymentfilter/observer</class>
+                        <method>payment_method_filter</method>
+                    </customer_group_payment_filter>
+                </observers>
+            </payment_method_is_active>
+        </events>
+    </frontend>
+</config>   
+
+
